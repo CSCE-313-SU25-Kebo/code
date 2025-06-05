@@ -9,8 +9,8 @@ using namespace std;
 
 int main()
 {
-    const char *file = "factorial.sh";
-    const char *arg1 = "Hello world!";
+    const char *file = "calculator.sh";
+    const char *arg1 = "12";
     execlp(file, file, arg1, NULL);
     return 0;
 }
