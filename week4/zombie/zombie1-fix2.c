@@ -13,14 +13,15 @@ int main()
     int pid = fork();
     if (pid == 0){
         //raise(SIGKILL);
-        // kill(getpid(), SIGKILL);
+        kill(getpid(), SIGKILL);
         for (i=0; i<20; i++)
             printf("I am Child\n");
     }
     else
     {
+        //wait(NULL);
         signal(SIGCHLD,SIG_IGN);  // LISTEN to a SIGCHLD signal and then do nothing
         printf("I am Parent\n");
-        //while(1);
+        while(1);
     }
 }

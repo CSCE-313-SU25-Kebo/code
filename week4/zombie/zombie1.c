@@ -19,6 +19,6 @@ int main()
     else
     {
         printf("I am Parent\n");
-        //while(1); // Keeps the CPU busy
+        while(1); // Keeps the CPU busy
     }
 }

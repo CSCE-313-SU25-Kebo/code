@@ -10,7 +10,7 @@
 // This function is a signal handler
 void do_something(int signum)
 {
-    printf("Captured count 10");
+    printf("Captured count 10\n");
 }
  
 int main()
@@ -26,9 +26,10 @@ int main()
     }
     else
     {
-        signal(SIGCHLD, SIG_IGN); // do_something is a signal handler
+        signal(SIGCHLD, do_something); // do_something is a signal handler
         //sigaction();
         printf("I am Parent\n");
-        while(1);
+        //while(1);
+        wait(NULL);
     }
 }

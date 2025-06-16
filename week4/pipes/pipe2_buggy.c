@@ -2,6 +2,7 @@
 Example: fork() and pipe() - *Bug
 This program creates a parent process and child process
 The goal is for the parent to sent a message to the child process
+// Pipe are unidirectional
  */
 #include <stdio.h>
 #include <stdlib.h>
