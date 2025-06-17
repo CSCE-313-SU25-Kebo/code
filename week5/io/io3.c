@@ -21,6 +21,9 @@ int main (void)
 
 	// Write to the STDOUT the value read from the file today.txt (fd[0])
 	//write(1, buf2, read(fd[0], buf2, 12));
+
+
+
 	write(1, buf2, read(fd[1], buf2, 12));
 
 	close(fd[1]);
