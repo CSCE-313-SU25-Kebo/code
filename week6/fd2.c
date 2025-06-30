@@ -20,6 +20,7 @@ int main()
 	char c;
 	char parent_char;
 	int fd = open("sample.txt", O_RDONLY, 0); // File descriptor SHARED between the child and parent process
+
 	if (fork() == 0)
 	{
 		printf("File descriptor (Child side): %d \n", fd);
@@ -34,21 +35,16 @@ int main()
 
 		read(fd, &c, 1); // In the child read one character from Minecraft - character 'e'
 		printf("Child --- c = %c\n", c);
-		//return 0;
+		// return 0;
 	}
 
 	// Both the parent and child process run the section below
 
-	//wait(0); // Wait for the child to finish updating the fd
+	wait(0); // Wait for the child to finish updating the fd
 	int fd2 = open("sample.txt", O_RDONLY, 0); // Created after the fork syscall
-	printf("File descriptor (Parent side): %d \n", fd);
-	lseek(fd, -1, SEEK_CUR);
-	read(fd, &c, 1); // In the parent read one character from Minecraft - character ??
-
-
 	read(fd2, &parent_char, 1);
-	printf("Parent --- c = %c\n", c);
 	printf("Parent read char from --- c = %c\n", parent_char);
+
 
 	exit(0);
 }

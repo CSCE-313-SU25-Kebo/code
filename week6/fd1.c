@@ -29,6 +29,9 @@ int main()
 	
 	read(fd3, &c3, 1);
 	printf("c = %c\n", c3);
+
+	read(fd2, &c2, 1);
+	printf("c (fd2) = %c\n", c2);
 	
 	exit(0);
 
