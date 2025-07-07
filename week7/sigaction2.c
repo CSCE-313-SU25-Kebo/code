@@ -6,6 +6,9 @@ Example: Use the sigaction() function to establish signal catching functions.
 #include <unistd.h>
 #include <stdio.h>
 
+/*
+This function check the membership of a passed signal to the set of currenkly blocked signals.
+*/
 void check_mask(int sig, char *signame)
 {
     // Set of signals
@@ -34,11 +37,7 @@ void catcher(int sig)
 
 int main(int argc, char *argv[])
 {
-
     struct sigaction sigact, old_sigact;
-
-    // Set of signals
-    //sigset_t sigset;
 
     /*
      * CONFIGURATION #1
@@ -47,7 +46,7 @@ int main(int argc, char *argv[])
      */
     // No blocking signal
     sigemptyset(&sigact.sa_mask); // EMPTY
-    sigact.sa_flags = 0;
+    sigact.sa_flags = 0; // Initialized empty (No Flags)
     sigact.sa_flags = sigact.sa_flags | SA_NODEFER | SA_RESETHAND;
     sigact.sa_handler = catcher;
     sigaction(SIGUSR1, &sigact, NULL); //Register the signal handler with the kernel. 
@@ -56,8 +55,8 @@ int main(int argc, char *argv[])
      * Send a signal to this program by using kill(getpid(), SIGUSR1); (equivalent to raise(SIGUSR1))
      */
     printf("Raising a SIGUSR1 signal\n");
-    raise(SIGUSR1);
-    //kill(getpid(), SIGUSR1);
+    //raise(SIGUSR1); // (1)
+    kill(getpid(), SIGUSR1);
 
     /*
      * Get the current value of the signal handling action for SIGUSR1.

@@ -10,7 +10,7 @@ This program receives signals from children processes and ends them one at a tim
 // Handler for the SIGCHLD signal
 void do_something (int sig){
     printf("SIGCHLD received: change in status of child.\n");
-    wait (0); // Waiting on any child process that returns
+    //wait (0); // Waiting on any child process that returns
 }
 
 int main (){

@@ -1,4 +1,4 @@
 echo "Welcome to CSCE 313"
 echo PID=$$
-echo "This is it"
+echo "This is it!"
 exit 7
